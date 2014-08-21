@@ -3,7 +3,7 @@ var app = express();
 var server = require('http').createServer(app);
 var fs = require('fs');
 var WebSocketServer = require('websocket').server;
-var piblaster = require("pi-blaster.js");
+//var piblaster = require("pi-blaster.js");
 
 
 
@@ -49,32 +49,67 @@ websock.on('request', function(request) {
         // Set GPIO pin 17 to a PWM of 24%
         // Truns the Servo to it's right
         if (Number(data)>2){        
-            piblaster.setPwm(17, 0.24);
+            //piblaster.setPwm(17, 0.24);
+			fs.writeFile("/dev/servoblaster", "echo 1=200", function(err) {
+			    if(err) {
+			        console.log(err);
+			    } else {
+			        console.log("echo 1=200");
+			    }
+			}); 
         }
 
         // If incoming data is > 2 send a signal to pin 17
         // Set GPIO pin 17 to a PWM of 6%
         // Truns the Servo to it's left
         if (Number(data)<(-2)){        
-            piblaster.setPwm(17, 0.06);
+            //piblaster.setPwm(17, 0.06);
+			fs.writeFile("/dev/servoblaster", "echo 1=90", function(err) {
+			    if(err) {
+			        console.log(err);
+			    } else {
+			        console.log("echo 1=90");
+			    }
+			}); 
         }
 
         // If incoming data is > 2 send a signal to pin 17
         // Set GPIO pin 17 to a PWM of 15%
         // Truns the Servo to it's center position
         if (Number(data)==0){        
-            piblaster.setPwm(17, 0.15);
+               // piblaster.setPwm(17, 0.15);
+			fs.writeFile("/dev/servoblaster", "echo 1=155", function(err) {
+			    if(err) {
+			        console.log(err);
+			    } else {
+			        console.log("echo 1=155");
+			    }
+			}); 
         }
 
     });
     
     connection.on('close', function (connection){
         //close connection
-        piblaster.setPwm(17, 0);
+        //piblaster.setPwm(17, 0);
+fs.writeFile("/dev/servoblaster", "echo 1=0", function(err) {
+			    if(err) {
+			        console.log(err);
+			    } else {
+			        console.log("echo 1=0");
+			    }
+			}); 
     });
 
     function closePin(){
-        piblaster.setPwm(17, 0);
+        //piblaster.setPwm(17, 0);
+fs.writeFile("/dev/servoblaster", "echo 1=0", function(err) {
+			    if(err) {
+			        console.log(err);
+			    } else {
+			        console.log("echo 1=0");
+			    }
+			}); 
     }
 
 });

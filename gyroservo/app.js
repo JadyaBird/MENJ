@@ -118,6 +118,5 @@ websock.on('request', function(request) {
 		 	
     }
 
-child();
 
 });

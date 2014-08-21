@@ -59,7 +59,7 @@ websock.on('request', function(request) {
 		             console.log('exec error: ' + error);
 		        }
 		    });
-		 	child();
+		 	
         }
 
         // If incoming data is > 2 send a signal to pin 17
@@ -75,7 +75,7 @@ websock.on('request', function(request) {
 		             console.log('exec error: ' + error);
 		        }
 		    });
-		 	child();
+		 	
         }
 
         // If incoming data is > 2 send a signal to pin 17
@@ -91,7 +91,7 @@ websock.on('request', function(request) {
 		             console.log('exec error: ' + error);
 		        }
 		    });
-		 	child();
+		 	
         }
 
     });
@@ -107,7 +107,7 @@ websock.on('request', function(request) {
 		             console.log('exec error: ' + error);
 		        }
 		    });
-		 	child();
+		 	
 	    });
 
     function closePin(){
@@ -120,7 +120,9 @@ websock.on('request', function(request) {
 		             console.log('exec error: ' + error);
 		        }
 		    });
-		 	child();
+		 	
     }
+
+child();
 
 });

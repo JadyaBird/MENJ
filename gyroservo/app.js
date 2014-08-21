@@ -49,9 +49,8 @@ websock.on('request', function(request) {
         // If incoming data is > 2 send a signal to pin 17
         // Set GPIO pin 17 to a PWM of 24%
         // Truns the Servo to it's right
-        if (Number(data)>2){        
-            //piblaster.setPwm(17, 0.24);
-			child = exec('echo 1=200 > /dev/servoblaster',
+        if (Number(data)>2){//up        
+	           child = exec('echo 1=145 > /dev/servoblaster',
 		    function (error, stdout, stderr) {
 		        
 		        if (error !== null) {
@@ -79,7 +78,7 @@ websock.on('request', function(request) {
         // If incoming data is > 2 send a signal to pin 17
         // Set GPIO pin 17 to a PWM of 15%
         // Truns the Servo to it's center position
-        if (Number(data)==0){        
+        if (Number(data) == 0){        
                // piblaster.setPwm(17, 0.15);
 			child = exec('echo 1=90 > /dev/servoblaster',
 		    function (error, stdout, stderr) {

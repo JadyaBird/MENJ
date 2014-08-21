@@ -50,7 +50,7 @@ websock.on('request', function(request) {
         // Truns the Servo to it's right
         if (Number(data)>2){        
             //piblaster.setPwm(17, 0.24);
-			fs.writeFile("/dev/servoblaster", "echo 1=200 >", function(err) {
+			fs.writeFile("../dev/servoblaster", "echo 1=200 >", function(err) {
 			    if(err) {
 			        console.log("echo 200" + err);
 			    } else {
@@ -64,7 +64,7 @@ websock.on('request', function(request) {
         // Truns the Servo to it's left
         if (Number(data)<(-2)){        
             //piblaster.setPwm(17, 0.06);
-			fs.writeFile("/dev/servoblaster", "echo 1=90 >", function(err) {
+			fs.writeFile("../dev/servoblaster", "echo 1=90 >", function(err) {
 			    if(err) {
 			        console.log("echo 90" +err);
 			    } else {
@@ -78,7 +78,7 @@ websock.on('request', function(request) {
         // Truns the Servo to it's center position
         if (Number(data)==0){        
                // piblaster.setPwm(17, 0.15);
-			fs.writeFile("/dev/servoblaster", "echo 1=155 >", function(err) {
+			fs.writeFile("../dev/servoblaster", "echo 1=155 >", function(err) {
 			    if(err) {
 			        console.log( "echo 155" +err);
 			    } else {
@@ -92,7 +92,7 @@ websock.on('request', function(request) {
     connection.on('close', function (connection){
         //close connection
         //piblaster.setPwm(17, 0);
-		fs.writeFile("/dev/servoblaster", "echo 1=0 >", function(err) {
+		fs.writeFile("../dev/servoblaster", "echo 1=0 >", function(err) {
 					    if(err) {
 					        console.log("echo 0" +err);
 					    } else {
@@ -103,7 +103,7 @@ websock.on('request', function(request) {
 
     function closePin(){
         //piblaster.setPwm(17, 0);
-		fs.writeFile("/dev/servoblaster", "echo 1=0 >", function(err) {
+		fs.writeFile("../dev/servoblaster", "echo 1=0 >", function(err) {
 					    if(err) {
 					        console.log("echo 0" +err);
 					    } else {

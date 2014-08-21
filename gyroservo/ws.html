@@ -1,14 +1,13 @@
   
-<title>Servo Controller By Thanura(ThamboPi)</title>
+<title>Fly That Blimp</title>
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
- 
+  <div id="content"></div>
 
-  <div id="content">
-</div>
-<div>
-   <span id="status">Connecting...</span>
+  <div>
+     <span id="status">Connecting...</span>
   </div>
+
 <script type="text/javascript">
    $(function () {
     // Position Variables
@@ -29,7 +28,7 @@
       var connection = new WebSocket('ws://'+document.domain+':1337');
 
       connection.onopen = function () {
-                           status.text('You are connected to ThanboPi Server.' +
+                           status.text('You are connected to Blimp Server.' +
      'Move your device and Have Fun!!');
       };
 
@@ -47,7 +46,7 @@
     }
    
     setInterval(function() {
-     connection.send('x' + ax);
+     connection.send('y' + ay);
      /*
        Going to use this data to control 
        the second servo motor

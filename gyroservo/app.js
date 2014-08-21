@@ -92,24 +92,24 @@ websock.on('request', function(request) {
     connection.on('close', function (connection){
         //close connection
         //piblaster.setPwm(17, 0);
-fs.writeFile("/dev/servoblaster", "echo 1=0 >", function(err) {
-			    if(err) {
-			        console.log(err);
-			    } else {
-			        console.log("echo 1=0");
-			    }
-			}); 
-    });
+		fs.writeFile("/dev/servoblaster", "echo 1=0 >", function(err) {
+					    if(err) {
+					        console.log(err);
+					    } else {
+					        console.log("echo 1=0");
+					    }
+					}); 
+	    });
 
     function closePin(){
         //piblaster.setPwm(17, 0);
-fs.writeFile("/dev/servoblaster", "echo 1=0 >", function(err) {
-			    if(err) {
-			        console.log(err);
-			    } else {
-			        console.log("echo 1=0");
-			    }
-			}); 
+		fs.writeFile("/dev/servoblaster", "echo 1=0 >", function(err) {
+					    if(err) {
+					        console.log(err);
+					    } else {
+					        console.log("echo 1=0");
+					    }
+					}); 
     }
 
 });

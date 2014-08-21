@@ -5,7 +5,8 @@ var fs = require('fs');
 var WebSocketServer = require('websocket').server;
 //var piblaster = require("pi-blaster.js");
 
-
+//Shell command (Node.js Child)
+var exec = require('child_process').exec, child;
 
 var clients = [ ];
 
@@ -50,13 +51,15 @@ websock.on('request', function(request) {
         // Truns the Servo to it's right
         if (Number(data)>2){        
             //piblaster.setPwm(17, 0.24);
-			fs.writeFile("/dev/servoblaster", "echo 1=200", function(err) {
-			    if(err) {
-			        console.log("echo 200" + err);
-			    } else {
-			        console.log("echo 1=200");
-			    }
-			}); 
+			child = exec('echo 1=200 > /dev/servoblaster',
+		    function (error, stdout, stderr) {
+		        console.log('stdout: ' + stdout);
+		        console.log('stderr: ' + stderr);
+		        if (error !== null) {
+		             console.log('exec error: ' + error);
+		        }
+		    });
+		 	child();
         }
 
         // If incoming data is > 2 send a signal to pin 17
@@ -64,13 +67,15 @@ websock.on('request', function(request) {
         // Truns the Servo to it's left
         if (Number(data)<(-2)){        
             //piblaster.setPwm(17, 0.06);
-			fs.writeFile("/dev/servoblaster", "echo 1=90", function(err) {
-			    if(err) {
-			        console.log("echo 90" +err);
-			    } else {
-			        console.log("echo 1=90");
-			    }
-			}); 
+			child = exec('echo 1=60 > /dev/servoblaster',
+		    function (error, stdout, stderr) {
+		        console.log('stdout: ' + stdout);
+		        console.log('stderr: ' + stderr);
+		        if (error !== null) {
+		             console.log('exec error: ' + error);
+		        }
+		    });
+		 	child();
         }
 
         // If incoming data is > 2 send a signal to pin 17
@@ -78,13 +83,15 @@ websock.on('request', function(request) {
         // Truns the Servo to it's center position
         if (Number(data)==0){        
                // piblaster.setPwm(17, 0.15);
-			fs.writeFile("/dev/servoblaster", "echo 1=155", function(err) {
-			    if(err) {
-			        console.log( "echo 155" +err);
-			    } else {
-			        console.log("echo 1=155");
-			    }
-			}); 
+			child = exec('echo 1=90 > /dev/servoblaster',
+		    function (error, stdout, stderr) {
+		        console.log('stdout: ' + stdout);
+		        console.log('stderr: ' + stderr);
+		        if (error !== null) {
+		             console.log('exec error: ' + error);
+		        }
+		    });
+		 	child();
         }
 
     });
@@ -92,24 +99,28 @@ websock.on('request', function(request) {
     connection.on('close', function (connection){
         //close connection
         //piblaster.setPwm(17, 0);
-		fs.writeFile("/dev/servoblaster", "echo 1=0", function(err) {
-					    if(err) {
-					        console.log("echo 0" +err);
-					    } else {
-					        console.log("echo 1=0");
-					    }
-					}); 
+		child = exec('echo 1=0 > /dev/servoblaster',
+		    function (error, stdout, stderr) {
+		        console.log('stdout: ' + stdout);
+		        console.log('stderr: ' + stderr);
+		        if (error !== null) {
+		             console.log('exec error: ' + error);
+		        }
+		    });
+		 	child();
 	    });
 
     function closePin(){
         //piblaster.setPwm(17, 0);
-		fs.writeFile("/dev/servoblaster", "echo 1=0", function(err) {
-					    if(err) {
-					        console.log("echo 0" +err);
-					    } else {
-					        console.log("echo 1=0");
-					    }
-					}); 
+		child = exec('echo 1=0 > /dev/servoblaster',
+		    function (error, stdout, stderr) {
+		        console.log('stdout: ' + stdout);
+		        console.log('stderr: ' + stderr);
+		        if (error !== null) {
+		             console.log('exec error: ' + error);
+		        }
+		    });
+		 	child();
     }
 
 });

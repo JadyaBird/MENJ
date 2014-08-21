@@ -22,7 +22,16 @@
      <span id="status">Connecting...</span>
   </div>
 
+
   <script type="text/javascript">
+
+    //JoyStick
+    var joystick = new VirtualJoystick({
+      mouseSupport  : true,
+      limitStickTravel: true,
+      stickRadius : 50
+    });
+    
      $(function () {
       // Position Variables
       var x   = 0;

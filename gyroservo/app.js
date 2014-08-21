@@ -53,8 +53,7 @@ websock.on('request', function(request) {
             //piblaster.setPwm(17, 0.24);
 			child = exec('echo 1=200 > /dev/servoblaster',
 		    function (error, stdout, stderr) {
-		        console.log('stdout: ' + stdout);
-		        console.log('stderr: ' + stderr);
+		        
 		        if (error !== null) {
 		             console.log('exec error: ' + error);
 		        }
@@ -69,8 +68,7 @@ websock.on('request', function(request) {
             //piblaster.setPwm(17, 0.06);
 			child = exec('echo 1=60 > /dev/servoblaster',
 		    function (error, stdout, stderr) {
-		        console.log('stdout: ' + stdout);
-		        console.log('stderr: ' + stderr);
+		        
 		        if (error !== null) {
 		             console.log('exec error: ' + error);
 		        }
@@ -85,8 +83,7 @@ websock.on('request', function(request) {
                // piblaster.setPwm(17, 0.15);
 			child = exec('echo 1=90 > /dev/servoblaster',
 		    function (error, stdout, stderr) {
-		        console.log('stdout: ' + stdout);
-		        console.log('stderr: ' + stderr);
+		        
 		        if (error !== null) {
 		             console.log('exec error: ' + error);
 		        }
@@ -101,8 +98,7 @@ websock.on('request', function(request) {
         //piblaster.setPwm(17, 0);
 		child = exec('echo 1=0 > /dev/servoblaster',
 		    function (error, stdout, stderr) {
-		        console.log('stdout: ' + stdout);
-		        console.log('stderr: ' + stderr);
+		        
 		        if (error !== null) {
 		             console.log('exec error: ' + error);
 		        }
@@ -114,8 +110,7 @@ websock.on('request', function(request) {
         //piblaster.setPwm(17, 0);
 		child = exec('echo 1=0 > /dev/servoblaster',
 		    function (error, stdout, stderr) {
-		        console.log('stdout: ' + stdout);
-		        console.log('stderr: ' + stderr);
+		        
 		        if (error !== null) {
 		             console.log('exec error: ' + error);
 		        }

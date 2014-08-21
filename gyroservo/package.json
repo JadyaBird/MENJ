@@ -1,0 +1,10 @@
+{
+  "name": "gyroservo",
+  "description": "Server Side Application to control a servo from phone gyro.",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "*",
+    "websocket" : "*"
+  }
+}

@@ -49,8 +49,19 @@ websock.on('request', function(request) {
         // If incoming data is > 2 send a signal to pin 17
         // Set GPIO pin 17 to a PWM of 24%
         // Truns the Servo to it's right
-        if (Number(data)>2){//up        
-	           child = exec('echo 1=145 > /dev/servoblaster',
+        if (Number(data)>2){//up 
+
+			//servoblaster       
+	        child = exec('echo 1=145 > /dev/servoblaster',
+		    function (error, stdout, stderr) {
+		        
+		        if (error !== null) {
+		             console.log('exec error: ' + error);
+		        }
+		    });
+
+		    //L293D Motor Control
+		    child = exec('f9 > sudo python motor.py',
 		    function (error, stdout, stderr) {
 		        
 		        if (error !== null) {
@@ -66,6 +77,15 @@ websock.on('request', function(request) {
         if (Number(data)<(-2)){        
             //piblaster.setPwm(17, 0.06);
 			child = exec('echo 1=60 > /dev/servoblaster',
+		    function (error, stdout, stderr) {
+		        
+		        if (error !== null) {
+		             console.log('exec error: ' + error);
+		        }
+		    });
+
+		    //L293D Motor Control
+		    child = exec('r4 > sudo python motor.py',
 		    function (error, stdout, stderr) {
 		        
 		        if (error !== null) {

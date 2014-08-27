@@ -52,7 +52,7 @@ websock.on('request', function(request) {
         if (Number(data)>2){//up 
 
 			//servoblaster       
-	        child = exec('echo 1=145 > /dev/servoblaster',
+	        child = exec('echo 4=145 > /dev/servoblaster',
 		    function (error, stdout, stderr) {
 		        
 		        if (error !== null) {
@@ -76,7 +76,7 @@ websock.on('request', function(request) {
         // Truns the Servo to it's left
         if (Number(data)<(-2)){        
             //piblaster.setPwm(17, 0.06);
-			child = exec('echo 1=60 > /dev/servoblaster',
+			child = exec('echo 4=60 > /dev/servoblaster',
 		    function (error, stdout, stderr) {
 		        
 		        if (error !== null) {
@@ -100,7 +100,7 @@ websock.on('request', function(request) {
         // Truns the Servo to it's center position
         if (Number(data) == 0){        
                // piblaster.setPwm(17, 0.15);
-			child = exec('echo 1=90 > /dev/servoblaster',
+			child = exec('echo 4=90 > /dev/servoblaster',
 		    function (error, stdout, stderr) {
 		        
 		        if (error !== null) {
@@ -115,7 +115,7 @@ websock.on('request', function(request) {
     connection.on('close', function (connection){
         //close connection
         //piblaster.setPwm(17, 0);
-		child = exec('echo 1=0 > /dev/servoblaster',
+		child = exec('echo 4=0 > /dev/servoblaster',
 		    function (error, stdout, stderr) {
 		        
 		        if (error !== null) {
@@ -127,7 +127,7 @@ websock.on('request', function(request) {
 
     function closePin(){
         //piblaster.setPwm(17, 0);
-		child = exec('echo 1=0 > /dev/servoblaster',
+		child = exec('echo 4=0 > /dev/servoblaster',
 		    function (error, stdout, stderr) {
 		        
 		        if (error !== null) {
